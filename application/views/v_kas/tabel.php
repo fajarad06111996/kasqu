@@ -4,9 +4,9 @@
                   <div class="card-header">
                     <!-- <h4></h4>  -->
                     <p>
-                    Pengeluaran Tanggal <b><?php echo date('d-m-20y'); ?> </b>
+                    Tanggal <b><?php echo date('d-m-20y'); ?> </b>
                     <br />
-                    * Masuk : <?php foreach($total_masuk_hari_ini as $tmhi){if($tmhi != NULL){echo "Tidak Ada Kas Masuk"; }else{echo "Rp.".number_format($tkhi->total, 0, ".", ".");}} ?> <br />
+                    * Masuk : <?php foreach($total_masuk_hari_ini as $tmhi){if($tmhi == NULL){echo "Tidak Ada Kas Masuk"; }else{echo "Rp.".number_format($tkhi->total, 0, ".", ".");}} ?> <br />
                     * Keluar : <?php foreach($total_keluar_hari_ini as $tkhi){if($tkhi == NULL){echo "Tidak Ada Kas Keluar";}else{echo "Rp.".number_format($tkhi->total, 0, ".", ".");}} ?></p>
                   </div>
                   <div class="card-body">

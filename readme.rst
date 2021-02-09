@@ -1,4 +1,11 @@
 ###################
+Tentang Aplikasi
+###################
+
+Aplikasi pengelolaan uang kas berbasis web dengan menggunakan PHP framework Codeigniter v.3 dan database MySQL, untuk templatenya menggunakan Stisla.
+
+
+###################
 What is CodeIgniter
 ###################
 

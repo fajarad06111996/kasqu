@@ -73,11 +73,16 @@ class M_kelola_kas extends CI_Model {
         return $sikat->result();
    }
 
-   public function cari()
-   {
-       $sikat = $this->db->query("SELECT * FROM tb_kas
-                                    WHERE ");
-   }
+//    public function cari()
+//    {
+//        $sikat = $this->db->query("SELECT * FROM tb_kas
+//                                     WHERE ");
+//    }
+
+    public function pengeluaran_terbesar(){
+        $sikat  = $this->db->query("SELECT created, keterangan, MAX(nominal) as pt FROM tb_kas WHERE jenis_kas = 'kk'");
+        return $sikat->result();
+    }
 
    public function tran_hari_ini()
    {
@@ -86,15 +91,15 @@ class M_kelola_kas extends CI_Model {
    }
 
    public function total_keluar_hari_ini(){
-       $sikat = $this->db->query("SELECT SUM(nominal) AS total FROM tb_kas WHERE DATE_FORMAT(created, '%Y-%m-%d') = CURDATE() AND jenis_kas = 'kk'");
+       $sikat = $this->db->query("SELECT SUM(nominal) AS total_keluar FROM tb_kas WHERE DATE_FORMAT(created, '%Y-%m-%d') = CURDATE() AND jenis_kas = 'kk'");
        return $sikat->result();}
 
    public function total_masuk_hari_ini(){
-       $sikat = $this->db->query("SELECT SUM(nominal) AS total FROM tb_kas WHERE DATE_FORMAT(created, '%Y-%m-%d') = CURDATE() AND jenis_kas = 'km'");
+       $sikat = $this->db->query("SELECT SUM(nominal) AS total_masuk FROM tb_kas WHERE DATE_FORMAT(created, '%Y-%m-%d') = CURDATE() AND jenis_kas = 'km'");
        return $sikat->result(); }
 
     public function tampil_kk(){
-        $sikat = $this->db->query(" select
+        $sikat = $this->db->query("select
                                         ifnull((SELECT SUM(nominal) FROM (tb_kas)WHERE((Month(created)=1)AND (jenis_kas = 'kk'))),0) AS Januari,
                                         ifnull((SELECT SUM(nominal) FROM (tb_kas)WHERE((Month(created)=2)AND (jenis_kas = 'kk'))),0) AS Februari,
                                         ifnull((SELECT SUM(nominal) FROM (tb_kas)WHERE((Month(created)=3)AND (jenis_kas = 'kk'))),0) AS Maret,

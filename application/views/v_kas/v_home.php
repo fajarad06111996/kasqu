@@ -13,16 +13,17 @@
                   <div class="card-stats-items">
                     <div class="card-stats-item">
                       <div class="card-stats-item-count"><?php echo count($tkm); ?></div>
-                      <div class="card-stats-item-label">Masuk</div>
+                      <div class="card-stats-item-label">Kas Masuk</div>
                     </div>
                     <div class="card-stats-item">
                     </div>
                     <div class="card-stats-item">
                       <div class="card-stats-item-count"><?php echo count($tkk); ?></div>
-                      <div class="card-stats-item-label">Keluar</div>
+                      <div class="card-stats-item-label">Kas Keluar</div>
                     </div>
                   </div>
                 </div>
+                
                 <div class="card-icon shadow-primary bg-primary">
                   <i class="fas fa-archive"></i>
                 </div>
@@ -38,43 +39,76 @@
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12">
               <div class="card card-statistic-2">
+                    <!-- untuk kas Masuk -->
+                    <div class="card-icon shadow-primary bg-primary">
+                      <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="card-wrap">
+                      <div class="card-header">
+                        <h4>Pemasukan</h4>
+                      </div>
+                      <div class="card-body">
+                        <h5>Rp. <?php foreach($total_masuk as $tm){echo number_format($tm->total_masuk, 0, ".", ".");}?></h5>
+                      </div>
+                    </div>
+              </div>
+
+              <div class="card card-statistic-2">
+                    <!-- untuk kas Keluar -->
+                    <div class="card-icon shadow-primary bg-primary">
+                      <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="card-wrap">
+                      <div class="card-header">
+                        <h4>Pengeluaran</h4>
+                      </div>
+                      <div class="card-body">
+                        <h5>Rp. <?php foreach($total_keluar as $tk){echo number_format($tk->total_keluar, 0, ".", ".");}?></h5>
+                      </div>
+                    </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-2 col-sm-2">
+              <div class="card card-statistic-2">
                 <div class="card-chart">
                   <canvas id="balance-chart" height="80"></canvas>
                 </div>
                 <div class="card-icon shadow-primary bg-primary">
-                  <i class="fas fa-dollar-sign"></i>
+                  <i class="fas fa-shopping-bag"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>K. Masuk</h4>
+                    <h4>Sisa Kas</h4>
                   </div>
                   <div class="card-body">
-                    <h5>Rp. <?php foreach($total_masuk as $tm){echo number_format($tm->total_masuk, 0, ".", ".");}?></h5>
+                   <h5>Rp. </h5>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
+
+            <!-- <div class="col-lg-3 col-md-4 col-sm-12">
               <div class="card card-statistic-2">
                 <div class="card-chart">
-                  <canvas id="sales-chart" height="80"></canvas>
+                  <canvas id="bar-chart" height="80"></canvas>
                 </div>
                 <div class="card-icon shadow-primary bg-primary">
                   <i class="fas fa-dollar-sign"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>K. Keluar</h4>
+                    <h4>Sisa Kas</h4>
                   </div>
                   <div class="card-body">
-                   <h5>Rp. <?php foreach($total_keluar as $tk){ echo number_format($tk->total_keluar, 0, ".", ".");}?></h5>
+                   <h5>Rp. </h5>
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-8">
               <div class="card">
                 <div class="card-header">
                   <h4>Kas Masuk & Keluar</h4>
@@ -84,6 +118,31 @@
                 </div>
               </div>
             </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card card-primary">
+                    <div class="card-header">
+                      <h4>Pengeluaran Terbesar</h4>
+                    </div>
+                    <div class="card-body">
+                      <p><b><?php foreach($pengeluaran_terbesar as $pt){ 
+                                    echo $pt->created.'<br />';
+                                    echo 'Rp. '.number_format($pt->pt, 0, ".", ".").'<br />'; 
+                                    echo $pt->keterangan;
+                              } ?>
+                      </b></p>
+                    </div>
+                  </div>
+
+                  <div class="card card-primary">
+                    <div class="card-header">
+                      <h4></h4>
+                    </div>
+                    <div class="card-body">
+                    <p></p>
+                  </div>
+                </div>
+              
           </div>
       </section>
 
